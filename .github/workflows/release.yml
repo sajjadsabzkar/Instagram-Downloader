@@ -85,12 +85,14 @@ jobs:
       uses: ncipollo/release-action@main
       if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
       with:
-         tag: ${{env.NOW}}
+         tag: ${{ github.event.head_commit.message }}
          artifacts: ${{steps.sign_app.outputs.signedReleaseFile}}
          allowUpdates: true
          removeArtifacts: false
          replacesArtifacts: true
-         body: |
-             Bazarcheh-V${{env.VER}}
+         body: ${{ steps.changelog.outputs.changelog }}
+         name: Release ${{ github.event.head_commit.message }}
+
+
 
     
