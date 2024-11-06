@@ -44,6 +44,7 @@ jobs:
         mv app/build/outputs/bundle/release/InInsta-release.aab app/build/outputs/app-release.aab
 
     - name: Sign APK with keystore
+      if: ${{ steps.regex-match.outputs.match != '' }}
       uses: r0adkll/sign-android-release@v1
       id: sign_app
       with:
@@ -57,6 +58,7 @@ jobs:
          
     - name: Build Changelog
       id: changelog
+      if: ${{ steps.regex-match.outputs.match != '' }}
       uses: ardalanamini/auto-changelog@v3
       with:
         mention-authors: false
@@ -81,7 +83,7 @@ jobs:
 
     - name: Upload Apk  to Release
       uses: ncipollo/release-action@v1.13.0
-      if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
+      if: ${{ steps.regex-match.outputs.match != '' }}
       with:
          tag: ${{ github.event.head_commit.message }}
          artifacts: app/build/outputs/*.apk
