@@ -29,6 +29,17 @@ jobs:
       run: chmod +x gradlew
     - name: Build with Gradle
       run: ./gradlew  --stacktrace  --info --scan assembleRelease  
+    - name: Sign APK with keystore
+      uses: r0adkll/sign-android-release@v1
+      id: sign_app
+      with:
+         releaseDirectory: app/build/outputs/apk/release
+         signingKeyBase64: ${{ secrets.KEY_STORE }}
+         alias: ${{ secrets.KEY_STORE_ALIAS }}
+         keyStorePassword: ${{ secrets.KEY_STORE_PASS }}
+         keyPassword: ${{ secrets.KEY_STORE_PASS }}
+      env:
+         BUILD_TOOLS_VERSION: "30.0.2"
     - name: echo Files
       run: | 
           echo $(tree -d)
