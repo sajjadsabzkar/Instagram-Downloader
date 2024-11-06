@@ -74,14 +74,14 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: app-release.apk
-          path: "app/build/outputs/app-release-signed.aab, app/build/outputs/app-release-signed.apk"
+          path: app/build/outputs/*.apk
 
     - name: Upload Apk  to Release
       uses: ncipollo/release-action@main
       if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
       with:
          tag: ${{ github.event.head_commit.message }}
-         artifacts: "app/build/outputs/app-release-signed.aab, app/build/outputs/app-release-signed.apk"
+         artifacts: app/build/outputs/*.apk
          allowUpdates: true
          removeArtifacts: false
          replacesArtifacts: true
