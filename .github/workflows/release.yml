@@ -80,8 +80,8 @@ jobs:
       with:
           name: app-release.apk
           path: |
-               app/build/outputs/*.apk
-               app/build/outputs/*.aab
+            app/build/outputs/*.apk
+            app/build/outputs/*.aab
 
     - name: Upload Apk  to Release
       uses: ncipollo/release-action@v1.13.0
