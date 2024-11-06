@@ -81,7 +81,7 @@ jobs:
           path: app/build/outputs/*.apk
 
     - name: Upload Apk  to Release
-      uses: ncipollo/release-action@main
+      uses: ncipollo/release-action@v1.13.0
       if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
       with:
          tag: ${{ github.event.head_commit.message }}
