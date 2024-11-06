@@ -88,7 +88,7 @@ jobs:
       if: ${{ steps.regex-match.outputs.match != '' }}
       with:
          tag: ${{ github.event.head_commit.message }}
-         artifacts: "app/build/outputs/app-release-signed.aab, app/build/outputs/app-release-signed.apk"
+         artifacts: "app/build/outputs/app-release.aab, app/build/outputs/app-release-signed.apk"
          allowUpdates: true
          removeArtifacts: false
          replacesArtifacts: true
