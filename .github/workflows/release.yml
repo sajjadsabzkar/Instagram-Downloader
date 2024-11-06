@@ -36,10 +36,10 @@ jobs:
       id: sign_app
       with:
          releaseDirectory: app/build/outputs/apk/release
-         signingKeyBase64: ${{ secrets.KEY_STORE }}
-         alias: ${{ secrets.KEY_STORE_ALIAS }}
-         keyStorePassword: ${{ secrets.KEY_STORE_PASS }}
-         keyPassword: ${{ secrets.KEY_STORE_PASS }}
+         signingKeyBase64: ${{secrets.KEY_STORE}}
+         alias: ${{secrets.KEY_STORE_ALIAS}}
+         keyStorePassword: ${{secrets.KEY_STORE_PASS}}
+         keyPassword: ${{secrets.KEY_STORE_PASS}}
       env:
          BUILD_TOOLS_VERSION: "34.0.0"
     - name: echo Files
