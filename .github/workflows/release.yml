@@ -28,7 +28,7 @@ jobs:
     - name: Grant execute permission for gradlew
       run: chmod +x gradlew
     - name: Build with Gradle
-      run: ./gradlew  --stacktrace  --info --scan build 
+      run: ./gradlew  --stacktrace  --info --scan assembleRelease  
     - name: echo Files
       run: | 
           echo $(tree -d)
@@ -47,7 +47,7 @@ jobs:
       uses: ncipollo/release-action@main
       if: ${{ env.PACKAGED_STATUS }} == 'success' && !cancelled()
       with:
-         tag: Bazarcheh-${{env.NOW}}
+         tag: ${{env.NOW}}
          artifacts: app/build/outputs/apk/release/*.apk
          allowUpdates: true
          removeArtifacts: false
