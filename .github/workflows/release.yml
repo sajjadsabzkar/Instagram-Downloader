@@ -79,7 +79,7 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: app-release.apk
-          path: ${{steps.sign_app.outputs.signedReleaseFile}}
+          path: "app/build/outputs/app-release-signed.aab, app/build/outputs/app-release-signed.apk"
 
     - name: Upload Apk  to Release
       uses: ncipollo/release-action@main
