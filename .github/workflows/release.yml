@@ -93,7 +93,4 @@ jobs:
          removeArtifacts: false
          replacesArtifacts: true
          body: ${{ steps.changelog.outputs.changelog }}
-
-
-
-    
+         name: Release ${{ github.event.head_commit.message }}
