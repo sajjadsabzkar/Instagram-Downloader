@@ -79,14 +79,14 @@ jobs:
       uses: actions/upload-artifact@v3
       with:
           name: app-release.apk
-          path: app/build/outputs/*.apk
+          path: app/build/outputs/*
 
     - name: Upload Apk  to Release
       uses: ncipollo/release-action@v1.13.0
       if: ${{ steps.regex-match.outputs.match != '' }}
       with:
          tag: ${{ github.event.head_commit.message }}
-         artifacts: app/build/outputs/*.apk
+         artifacts: "app/build/outputs/app-release-signed.aab, app/build/outputs/app-release-signed.apk"
          allowUpdates: true
          removeArtifacts: false
          replacesArtifacts: true
