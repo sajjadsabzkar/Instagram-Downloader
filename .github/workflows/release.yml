@@ -1,4 +1,4 @@
-name: Android CI
+name: Release
 
 on:
   workflow_dispatch: 
@@ -38,7 +38,7 @@ jobs:
       run: |
         echo $(find . -type f -printf "%T@ %p\n" | sort -nr | cut -d\  -f2-)
     - name: Upload APK artifact
-      uses: actions/upload-artifact@v2
+      uses: actions/upload-artifact@v3
       with:
           name: app-release.apk
           path: app/build/outputs/apk/release/*.apk
