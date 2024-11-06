@@ -36,7 +36,6 @@ jobs:
        ./gradlew  --stacktrace  --info --scan assembleRelease  
        
     - name: Move files
-      if: ${{ steps.regex-match.outputs.match != '' }}
       run: |
         mv app/build/outputs/apk/release/InInsta-release-unsigned.apk app/build/outputs/app-release.apk
         mv app/build/outputs/bundle/release/InInsta-release.aab app/build/outputs/app-release.aab
